@@ -16,6 +16,5 @@ jobs:
           name: testSecret
           decryptSecretName: getsecretactionpublic
           decryptSecretValue: ${{ secrets.GET_SECRET_ACTION_PUBLIC_SECRET }}
-      # Use the output from the `hello` step
       - name: Compare the output
         run: ./compare-output.sh "${{ steps.test_secret.outputs.value }}" "${{ secrets.EXPECTED_SECRET_OUT }}"

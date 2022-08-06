@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/benammann/git-secrets-get-secret-action"><img alt="GitHub Actions status" src="https://github.com/benammann/git-secrets-get-secret-action/workflows/test-local/badge.svg"></a>
+  <a href="https://github.com/benammann/git-secrets-get-secret-action"><img alt="GitHub Actions status" src="https://github.com/benammann/git-secrets-get-secret-action/actions/workflows/test-local.yaml/badge.svg"></a>
 </p>
 
 # Git-Secrets Get Secret Action
@@ -66,7 +66,6 @@ The decoded value is now available at `${{ steps.get_secret.outputs.value }}`
     name: testSecret
     decryptSecretName: getsecretactionpublic
     decryptSecretValue: ${{ secrets.GET_SECRET_ACTION_PUBLIC_SECRET }}
-# Use the output from the `hello` step
 - name: Echo the output
   run: echo "${{ steps.test_secret.outputs.value }}"
 ```
