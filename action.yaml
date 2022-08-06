@@ -1,6 +1,9 @@
 # action.yml
 name: 'Decrypt Secret'
 description: 'Decrypts a secret from .git-secrets.json'
+branding:
+  icon: info
+  color: blue
 inputs:
   file:
     description: 'Path to .git-secrets.json'
