@@ -1,0 +1,38 @@
+# action.yml
+name: 'Decrypt Secret'
+description: 'Decrypts a secret from .git-secrets.json'
+inputs:
+  file:
+    description: 'Path to .git-secrets.json'
+    required: false
+    default: '.git-secrets.json'
+  context:
+    description: 'Which context to use'
+    required: false
+    default: 'default'
+  resource:
+    description: 'Resolve secret or config entry'
+    required: false
+    default: 'secret'
+  name:
+    description: 'The name of the resource'
+    required: true
+  decryptSecretName:
+    description: 'The decrypt secret name'
+    required: true
+  decryptSecretValue:
+    description: 'The decrypt secret value'
+    required: true
+outputs:
+  value: # id of output
+    description: 'either the decoded secret value or the config value'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.file }}
+    - ${{ inputs.context }}
+    - ${{ inputs.resource }}
+    - ${{ inputs.name }}
+    - ${{ inputs.decryptSecretName }}
+    - ${{ inputs.decryptSecretValue }}

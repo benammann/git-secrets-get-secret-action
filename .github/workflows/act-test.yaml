@@ -1,0 +1,21 @@
+on: [push]
+
+jobs:
+  resolve_secret_value:
+    runs-on: ubuntu-latest
+    name: Resolves the secret value
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Decrypt Secret Value
+        id: test_secret
+        uses: ./
+        with:
+          name: testSecret
+          decryptSecretName: getsecretactionpublic
+          decryptSecretValue: ${{ secrets.GET_SECRET_ACTION_PUBLIC_SECRET }}
+      # Use the output from the `hello` step
+      - name: Compare the output
+        run: ./compare-output.sh "${{ steps.test_secret.outputs.value }}" "${{ secrets.EXPECTED_SECRET_OUT }}"
