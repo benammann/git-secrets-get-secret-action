@@ -1,7 +1,7 @@
 on: [push]
 
 jobs:
-  resolve_secret_value:
+  test-local:
     runs-on: ubuntu-latest
     name: Resolves the secret value
     steps:
